@@ -92,10 +92,8 @@
         <div 
             x-show="open"
             class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40"
-            x-transition
-        >
-            <div class="bg-white dark:bg-gray-800 p-6 rounded-xl w-full max-w-md shadow-2xl"
-     @click.away="open=false">
+            x-transition >
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-xl w-full max-w-md shadow-2xl" @click.away="open=false">
 
 
                 <h2 class="text-xl font-semibold mb-4" 
@@ -113,10 +111,53 @@
                         <label class="block font-medium mb-1">Key</label>
                         <input type="text" name="key" 
                                class="w-full border rounded px-3 py-2"
-                               x-model="setting.key"
-                               readonly>
+                               x-model="setting.key">
                     </div>
 
+                    <!-- ====== -->
+
+                    <div class="mb-4">
+                        <label class="block font-medium mb-2">Tipe</label>
+
+                        <div class="flex gap-5">
+
+                            <!-- RADIO TEXT -->
+                            <label class="flex flex-col items-center cursor-pointer">
+                                <input type="radio" name="type" value="text"
+                                    x-model="setting.type"
+                                    class="peer hidden">
+                                <div class="border rounded p-3 w-28 text-center peer-checked:border-blue-500">
+                                    📌
+                                    <span class="text-sm font-semibold">Text</span>
+                                </div>
+                            </label>
+
+                            <!-- RADIO IMAGE -->
+                            <label class="flex flex-col items-center cursor-pointer">
+                                <input type="radio" name="type" value="image"
+                                    x-model="setting.type"
+                                    class="peer hidden">
+                                <div class="border rounded p-3 w-28 text-center peer-checked:border-blue-500">
+                                    📌
+                                    <span class="text-sm font-semibold">Image</span>
+                                </div>
+                            </label>
+
+                            <!-- RADIO CTA (opsional) -->
+                            <label class="flex flex-col items-center cursor-pointer">
+                                <input type="radio" name="type" value="cta"
+                                    x-model="setting.type"
+                                    class="peer hidden">
+                                <div class="border rounded p-3 w-28 text-center peer-checked:border-blue-500">
+                                    📌
+                                    <span class="text-sm font-semibold">CTA</span>
+                                </div>
+                            </label>
+
+                        </div>
+                    </div>
+
+                    <!-- ===== -->
                     <template x-if="setting.type === 'image'">
                         <div class="mb-4">
                             <label class="block font-medium mb-1">Upload Image</label>
@@ -136,7 +177,7 @@
                                 x-text="setting.value"></textarea>
                         </div>
                     </template>
-
+                    <input type="hidden" name="status" value=0>
                     <div class="flex justify-end gap-3 mt-5">
                         <button type="button" @click="open=false"
                                 class="px-4 py-2 bg-gray-500 text-white rounded">
