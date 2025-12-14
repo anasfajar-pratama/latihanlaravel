@@ -71,18 +71,18 @@ class LandingSeeder extends Seeder
          * FOOTER LINKS
          * =============================== */
         $footerLinks = [
-            ['Beranda', '#beranda', 1],
-            ['Program', '#program', 2],
-            ['Tentang', '#tentang', 3],
-            ['Kontak', '#kontak', 4],
-            ['Email: info@lp3i.ac.id', 'mailto:info@lp3i.ac.id', 5],
-            ['Telp: (021) 12345678', 'tel:+622112345678', 6],
+            ['Beranda', '#beranda', 'nav',1],
+            ['Program', '#program', 'nav',2],
+            ['Tentang', '#tentang', 'nav',3],
+            ['Kontak', '#kontak', 'nav',4],
+            ['Email: info@lp3i.ac.id', 'mailto:info@lp3i.ac.id', NULL,5],
+            ['Telp: (021) 12345678', 'tel:+622112345678', NULL,6],
         ];
 
         foreach ($footerLinks as $item) {
             LandingFooterLink::updateOrCreate(
                 ['label' => $item[0]],
-                ['url' => $item[1], 'position' => $item[2], 'status' => 1]
+                ['url' => $item[1], 'group'=> $item[2],'position' => $item[3], 'status' => 1]
             );
         }
     }
